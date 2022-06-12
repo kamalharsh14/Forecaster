@@ -46,7 +46,7 @@ button {
   transition: 0.2s ease-in-out;
 }
 button:hover {
-  background-color: rgba(66, 66, 66, 0.863);
+  background-color: rgba(36, 36, 36, 0.863);
 }
 
 input {
@@ -54,7 +54,7 @@ input {
   outline: none;
   border-radius: 20px;
   padding: 0.4em 1em;
-  background-color: rgba(54, 54, 54, 0.384);
+  background-color: rgba(75, 75, 75, 0.603);
   color: white;
   font-size: 105%;
   width: calc(100% - 80px);
