@@ -1,4 +1,5 @@
-# Forecaster - a weather forecasting app
+# Forecaster 
+- a weather forecasting app
 
 # Landing page
 ![1](https://user-images.githubusercontent.com/60378766/173223258-e7d3e195-0640-4c66-b547-0572ff6cd761.jpg)
