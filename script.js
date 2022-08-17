@@ -1,6 +1,6 @@
 let weather = {
   apiKey: "386617448263377540e5e4979cdd4474",
-  fetchWeather: function (city) {
+  fetchWeather: (city) =>{
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
@@ -10,7 +10,7 @@ let weather = {
       .then((response) => response.json())
       .then((data) => this.displayWeather(data));
   },
-  displayWeather: function (data) {
+  displayWeather: (data) => {
     const { name } = data;
     const { temp, humidity, feels_like } = data.main;
     const { description, icon } = data.weather[0];
@@ -32,18 +32,18 @@ let weather = {
     document.body.style.backgroundImage =
       "url('https://source.unsplash.com/1600x900/?" + name + "')";
   },
-  search: function () {
+  search:() => {
     this.fetchWeather(document.querySelector(".search-content").value);
   },
 };
 
-document.querySelector(".btn").addEventListener("click", function () {
+document.querySelector(".btn").addEventListener("click", () =>{
   weather.search();
 });
 
 document
   .querySelector(".search-content")
-  .addEventListener("keyup", function (event) {
+  .addEventListener("keyup", (event) =>{
     if (event.key == "Enter") {
       weather.search();
     }
