@@ -1,6 +1,6 @@
 let weather = {
   apiKey: "386617448263377540e5e4979cdd4474",
-  fetchWeather: function (city) {
+  fetchWeather: (city) =>{
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
         city +
@@ -43,7 +43,7 @@ document.querySelector(".btn").addEventListener("click", function () {
 
 document
   .querySelector(".search-content")
-  .addEventListener("keyup", function (event) {
+  .addEventListener("keyup", (event) =>{
     if (event.key == "Enter") {
       weather.search();
     }
