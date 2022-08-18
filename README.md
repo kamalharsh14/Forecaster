@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 # Forecaster - a weather forecasting app
+=======
+# Forecaster 
+- A web application that shows the current weather details of a city. The weather data was getting loaded from openweathermap.org using fetchAPI. The details were getting displayed using the DOM properties. Pure Css was used for designing the website. It works prefectly on all the devices.
+
+>>>>>>> 8f4e7263d4113f67d1f8baeb03477514d5a4a35d
 
 # Landing page
 ![1](https://user-images.githubusercontent.com/60378766/173223258-e7d3e195-0640-4c66-b547-0572ff6cd761.jpg)
