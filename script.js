@@ -13,16 +13,43 @@ document
 
 //Getting values from 'INPUT' and invoking fetchWeather()
 function search() {
-  fetchWeather(document.querySelector(".search-content").value);
+  const cityName = document.querySelector(".search-content").value;
+  fetchWeather(cityName.toLowerCase());
 }
 
 const apiKey = "386617448263377540e5e4979cdd4474";
 
-//Function for triggering API of the searched City
+//Function for triggering API for the searched City
 function fetchWeather(city) {
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey)
-    .then((response) => response.json())
-    .then((data) => displayWeather(data)); //Calling displayWeather() to display the data
+  //If city is already searched then code will enter this block
+  if(isDataUpdated(city)){
+    const data = JSON.parse(localStorage.getItem(city));
+    displayWeather(data);
+  }
+  //If city is searched for the first time then code will enter this block
+  else{
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=" + apiKey;
+    //fetching url using FetchAPI
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => displayWeather({...data, time: Date.now()})); //Calling displayWeather() to display the data
+  }
+}
+
+//Function to check if City Weather data is present in teh LocalStorage or Not
+function isDataUpdated(city){
+  if(localStorage.getItem(city) == null) return false;
+  const diff = getTimeDiff(city);
+  console.log(diff);
+  return (diff < 600000);
+}
+
+//Function to get time difference between two API calls
+function getTimeDiff(city){
+  const currTime = Date.now();
+  const data = JSON.parse(localStorage.getItem(city));
+  const storedTime = data.time;
+  return currTime - storedTime;
 }
 
 //Deconstructing the data fetched from fetchWeather() and Displaying it using DOM properties
@@ -32,6 +59,8 @@ function displayWeather(data) {
   const { temp, humidity, feels_like } = data.main;
   const { description, icon } = data.weather[0];
   const { speed } = data.wind;
+  //Saving data into local storage
+  localStorage.setItem(name.toLowerCase(), JSON.stringify(data));
   //Displaying the data
   document.querySelector(".city").innerHTML = "Weather in " + name;
   document.querySelector(".temp").innerHTML = temp + "°C";
