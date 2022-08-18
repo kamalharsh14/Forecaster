@@ -4,8 +4,7 @@ document.querySelector(".btn").addEventListener("click", () =>{
 });
 
 //Enter button functionalities for searching on 'Enter'
-document
-  .querySelector(".search-content").addEventListener("keyup", (event) => {
+document.querySelector(".search-content").addEventListener("keyup", (event) => {
     if (event.key == "Enter") {
       search();
     }
