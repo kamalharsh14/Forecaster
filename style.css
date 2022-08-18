@@ -66,13 +66,6 @@ input {
   position: relative;
 }
 
-.weather.loading::after {
-  visibility: visible;
-  content: "Loading...";
-  color: white;
-  position: absolute top = 0;
-}
-
 .weather {
   margin-left: 0.4em;
 }
