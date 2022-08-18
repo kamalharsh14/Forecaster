@@ -31,7 +31,10 @@ function fetchWeather(city) {
     //fetching url using FetchAPI
     fetch(url)
       .then((response) => response.json())
-      .then((data) => displayWeather({...data, time: Date.now()})); //Calling displayWeather() to display the data
+      .then((data) => displayWeather({...data, time: Date.now()})) //Calling displayWeather() to display the data
+      .catch(error => { //added check so that if someone enters invalid data then error is thrown
+        return alert('Enter valid city/state/country name', error);
+      })
   }
 }
 
