@@ -40,7 +40,6 @@ function fetchWeather(city) {
 function isDataUpdated(city){
   if(localStorage.getItem(city) == null) return false;
   const diff = getTimeDiff(city);
-  console.log(diff);
   return (diff < 600000);
 }
 
@@ -52,6 +51,11 @@ function getTimeDiff(city){
   return currTime - storedTime;
 }
 
+//Inserting/Updating weather along with time in Local Storage
+function updateLocalStorage(data){
+  localStorage.setItem(data.name.toLowerCase(), JSON.stringify(data));
+}
+
 //Deconstructing the data fetched from fetchWeather() and Displaying it using DOM properties
 function displayWeather(data) {
   //Deconstructing the data
@@ -60,7 +64,7 @@ function displayWeather(data) {
   const { description, icon } = data.weather[0];
   const { speed } = data.wind;
   //Saving data into local storage
-  localStorage.setItem(name.toLowerCase(), JSON.stringify(data));
+  updateLocalStorage(data);
   //Displaying the data
   document.querySelector(".city").innerHTML = "Weather in " + name;
   document.querySelector(".temp").innerHTML = temp + "°C";
